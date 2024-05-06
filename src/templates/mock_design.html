@@ -149,7 +149,7 @@
                         <tr >
                             <td class="two-column">
                                 <table class="column" width="100%" style="padding-bottom: 18px;">
-                                    {% for item in data.sales.ongoing_sales %}
+                                    {% for item in data['sales']['ongoing_sales'] %}
                                     {% if loop.index % 2 == 1 %} <!-- checks if this row is even or odd, if it is odd it will start new row -->
                                     <tr>
                                     {% endif %}
@@ -166,9 +166,9 @@
                                             {% endif %} 
                                             
                                            
-                                            <img src="{{item.image}}" alt="" width="224px" height="200px"><p style="height:6px; width:auto; font-size:12px; text-align: left; color: #0D2137; font-family: 'Inter', sans-serif; font-weight:400; font-size: 9px; "> <!-- also here -->
-                                            {{item.painting}} <span style="color: #0D2137; font-size: 9px; font-family: 'Inter', sans-serif; font-weight:bold; padding-left:175px;"> <!-- also here --> {{item.price}}</span></p> 
-                                            <p style="height:2px; width:auto; font-size:9px; text-align: left; color: #0D2137; font-family: 'Inter', sans-serif; font-weight: 600;"><!-- also here -->{{item.name}} </p> 
+                                            <img src="{{item['image']}}" alt="" width="224px" height="200px"><p style="height:6px; width:auto; font-size:12px; text-align: left; color: #0D2137; font-family: 'Inter', sans-serif; font-weight:400; font-size: 9px; "> <!-- also here -->
+                                            {{item['']}} <span style="color: #0D2137; font-size: 9px; font-family: 'Inter', sans-serif; font-weight:bold; padding-left:175px;"> <!-- also here --> {{item['price']}}</span></p> 
+                                            <p style="height:2px; width:auto; font-size:9px; text-align: left; color: #0D2137; font-family: 'Inter', sans-serif; font-weight: 600;"><!-- also here -->{{item['name']}} </p> 
                                         </td>
 
 
@@ -184,10 +184,10 @@
                                         
                                         
                                            <!--  dynamic image img.url -->
-                                            <img src="{{item.image}}" alt="" width="224px" height="200px">
-                                            <p style="height:6px; width:40px; font-size:12px; text-align: left; color: #0D2137; font-family: 'Inter', sans-serif; font-weight:400; font-size: 9px;" > <!-- also here  -->{{item.painting}}<span style="color: #0D2137; font-size: 9px; font-family: 'Inter', sans-serif; font-weight:bold; padding-left:175px;"><!-- also here  -->{{item.price}}</span></p>
+                                            <img src="{{item['image']}}" alt="" width="224px" height="200px">
+                                            <p style="height:6px; width:40px; font-size:12px; text-align: left; color: #0D2137; font-family: 'Inter', sans-serif; font-weight:400; font-size: 9px;" > <!-- also here  -->{{item['painting']}}<span style="color: #0D2137; font-size: 9px; font-family: 'Inter', sans-serif; font-weight:bold; padding-left:175px;"><!-- also here  -->{{item['price']}}</span></p>
                                         
-                                            <p style="height:2px; width:auto; font-size:9px; text-align: left; color: #0D2137; font-family: 'Inter', sans-serif; font-weight: 600;"><!-- also here  -->{{item.name}} </p>
+                                            <p style="height:2px; width:auto; font-size:9px; text-align: left; color: #0D2137; font-family: 'Inter', sans-serif; font-weight: 600;"><!-- also here  -->{{item['name']}} </p>
                                         </td>
                                     {% if loop.index % 2 == 0 %}
                                     </tr>
@@ -202,7 +202,7 @@
                         <tr>
                             <td class="two-column">
                                 <table class="column" width="100%" style="padding-top:8px;">
-                                    {% for item in data.sales.past_sales %}
+                                    {% for item in data['sales']['past_sales'] %}
                                     {% if loop.index % 2 == 1 %} <!-- checks if this row is even or odd, if it is odd it will start new row -->
                                     <tr>
                                     {% endif %}
@@ -215,9 +215,9 @@
                                             {% endif %}
 
 
-                                            <img src="{{item.image}}" alt="" width="224px" height="200px"><p style="height:6px; width:auto; font-size:12px; text-align: left; color: #0D2137; font-family: 'Inter', sans-serif; font-weight:400; font-size: 9px; "> {{item.painting}} <span style="color: #0D2137; font-size: 9px; font-family: 'Inter', sans-serif; font-weight:bold; padding-left:60px;">{{item.price}}</span></p> 
+                                            <img src="{{item['image']}}" alt="" width="224px" height="200px"><p style="height:6px; width:auto; font-size:12px; text-align: left; color: #0D2137; font-family: 'Inter', sans-serif; font-weight:400; font-size: 9px; "> {{item['painting']}} <span style="color: #0D2137; font-size: 9px; font-family: 'Inter', sans-serif; font-weight:bold; padding-left:60px;">{{item['price']}}</span></p> 
 
-                                            <p style="height:2px; width:auto; font-size:9px; text-align: left; color: #0D2137; font-weight: bold;">{{item.name}}</p> 
+                                                        <p style="height:2px; width:auto; font-size:9px; text-align: left; color: #0D2137; font-weight: bold;">{{item['name']}}</p> 
                                         </td>
 
 
@@ -229,10 +229,10 @@
                                             <p style="height:12px; width:45px; font-size:8px; text-align: left; color: #0D2137; background: #D3E6FB 0% 0% no-repeat padding-box; margin:5px;   font-family: 'Inter', sans-serif; font-weight:500;">Withdrawn</p>
                                             {% endif %}
 
-                                            <img src="{{item.image}}" alt="" width="224px" height="200px">
-                                            <p style="height:6px; width:auto; font-size:12px; text-align: left; color: #0D2137; font-family: 'Inter', sans-serif; font-weight:500; font-size: 9px;">{{item.painting}}</p>
+                                            <img src="{{item['image']}}" alt="" width="224px" height="200px">
+                                            <p style="height:6px; width:auto; font-size:12px; text-align: left; color: #0D2137; font-family: 'Inter', sans-serif; font-weight:500; font-size: 9px;">{{item['painting']}}</p>
 
-                                            <p style="height:2px; width:auto; font-size:9px; text-align: left; color: #0D2137; font-family: 'Inter', sans-serif; font-weight: 600;"> {{item.name}}<span style="color: #0D2137; font-size: 9px; font-family: 'Inter', sans-serif; font-weight:bold; padding-left:57px;">{{item.price}}</span></p>             
+                                            <p style="height:2px; width:auto; font-size:9px; text-align: left; color: #0D2137; font-family: 'Inter', sans-serif; font-weight: 600;"> {{item['name']}}<span style="color: #0D2137; font-size: 9px; font-family: 'Inter', sans-serif; font-weight:bold; padding-left:57px;">{{item['price']}}</span></p>             
                                         </td>
                                     {% if loop.index %2 == 0 %}
                                     </tr>
@@ -258,7 +258,7 @@
                         <tr>
                             <td class="two-column">
                                 <table class="column" width="100%" style="padding-bottom:10px;">
-                                    {% for item in data.events.events_near_me %}
+                                    {% for item in data['events']['events_near_me'] %}
                                     {% if loop.index % 2 == 1 %} <!-- checks if this row is even or odd, if it is odd it will start new row -->
                                     <tr>
                                     {% endif%}
@@ -268,11 +268,11 @@
                                             {% endif %}
                                            
 
-                                            <img src="{{item.image}}" alt="" width="224px" height="200px"><p style="height:6px; width:auto; font-size:12px; text-align: left; color: #0D2137; ">
-                                            <p style="height:6px; width:auto; font-size:12px; text-align: left; color: #0D2137;font-family: 'Inter', sans-serif; font-weight:400; font-size: 9px; ">{{item.painting}}</p>
+                                            <img src="{{item['image']}}" alt="" width="224px" height="200px"><p style="height:6px; width:auto; font-size:12px; text-align: left; color: #0D2137; ">
+                                            <p style="height:6px; width:auto; font-size:12px; text-align: left; color: #0D2137;font-family: 'Inter', sans-serif; font-weight:400; font-size: 9px; ">{{item['painting']}}</p>
                                         
-                                            <p style="height:10px; width:auto; font-size:9px; text-align: left; color: #0D2137; font-weight: bold;">{{item.date}}</p> 
-                                            <p style="height:10px; width:auto; font-size:9px; text-align: left; color: #0D2137; font-family: 'Inter', sans-serif; font-weight: 500;">{{item.location}}</p> 
+                                            <p style="height:10px; width:auto; font-size:9px; text-align: left; color: #0D2137; font-weight: bold;">{{item['date']}}</p> 
+                                            <p style="height:10px; width:auto; font-size:9px; text-align: left; color: #0D2137; font-family: 'Inter', sans-serif; font-weight: 500;">{{item['location']}}</p> 
                                         </td>
 
 
@@ -282,11 +282,11 @@
                                             <a href="#" style="height:12px; width: auto; font-size:12px; text-align: right; color: #346BEB; padding-left:159px;   font-family: 'Inter', sans-serif; font-weight:500; font-size: 9px;">know more</a>
                                             {% endif %}
                                             
-                                            <img src="{{item.image}}" alt="" width="224px" height="200px" style="padding-top:12px;">
-                                            <p style="height:6px; width:auto; font-size:12px; text-align: left; color: #0D2137; padding-top:20px; font-family: 'Inter', sans-serif; font-weight:400; font-size: 9px;">{{item.painting}}/p>
+                                            <img src="{{item['image']}}" alt="" width="224px" height="200px" style="padding-top:12px;">
+                                            <p style="height:6px; width:auto; font-size:12px; text-align: left; color: #0D2137; padding-top:20px; font-family: 'Inter', sans-serif; font-weight:400; font-size: 9px;">{{item['painting']}}/p>
                                         
-                                            <p style="height:10px; width:auto; font-size:9px; text-align: left; color: #0D2137; font-weight: bold;">{{item.date}}</p> 
-                                            <p style="height:10px; width:auto; font-size:9px; text-align: left; color: #0D2137; font-family: 'Inter', sans-serif; font-weight: 500;">{{item.location}}</p> 
+                                            <p style="height:10px; width:auto; font-size:9px; text-align: left; color: #0D2137; font-weight: bold;">{{item['date']}}</p> 
+                                            <p style="height:10px; width:auto; font-size:9px; text-align: left; color: #0D2137; font-family: 'Inter', sans-serif; font-weight: 500;">{{item['location']}}</p> 
                                         
                                         </td>
                                     {% if loop.index %2 ==0 %}
@@ -304,7 +304,7 @@
                         <tr>
                             <td class="two-column">
                                 <table class="column" width="100%" style="padding-top:10px;">
-                                    {% for item in data.events.upcoming_events %}
+                                    {% for item in data['events']['upcoming_events'] %}
                                     {% if loop.index % 2 == 1 %} <!-- checks if this row is even or odd, if it is odd it will start new row -->
                                     <tr>
                                     {% endif %}
@@ -314,11 +314,11 @@
                                              {% endif %}
                                            
 
-                                            <img src="{{item.image}}" alt="" width="224px" height="200px">
-                                            <p style="height:6px; width:auto; font-size:12px; text-align: left; color: #0D2137;font-family: 'Inter', sans-serif; font-weight:400; font-size: 9px; ">{{item.painting}}</p>
+                                            <img src="{{item['image']}}" alt="" width="224px" height="200px">
+                                            <p style="height:6px; width:auto; font-size:12px; text-align: left; color: #0D2137;font-family: 'Inter', sans-serif; font-weight:400; font-size: 9px; ">{{item['painting']}}</p>
                                         
-                                            <p style="height:10px; width:auto; font-size:9px; text-align: left; color: #0D2137; font-weight: bold;">{{item.date}}</p> 
-                                            <p style="height:10px; width:auto; font-size:9px; text-align: left; color: #0D2137; ">{{item.location}}</p> 
+                                            <p style="height:10px; width:auto; font-size:9px; text-align: left; color: #0D2137; font-weight: bold;">{{item['date']}}</p> 
+                                            <p style="height:10px; width:auto; font-size:9px; text-align: left; color: #0D2137; ">{{item['location']}}</p> 
                                         </td>
 
 
@@ -327,11 +327,11 @@
                                             <a href="#"style="height:12px; width: auto; font-size:12px; text-align: right; color: #346BEB; padding-left:159px;  ">know more</a>
                                             {% endif %}
                                             
-                                            <img src="{{item.image}}" alt="" width="224px" height="200px" style="padding-top:10px">
-                                            <p style="height:6px; width:auto; font-size:12px; text-align: left; color: #0D2137;font-family: 'Inter', sans-serif; font-weight:400; font-size: 9px;  ">{{item.painting}}</p>
+                                            <img src="{{item['image']}}" alt="" width="224px" height="200px" style="padding-top:10px">
+                                            <p style="height:6px; width:auto; font-size:12px; text-align: left; color: #0D2137;font-family: 'Inter', sans-serif; font-weight:400; font-size: 9px;  ">{{item['painting']}}</p>
                                         
-                                            <p style="height:10px; width:auto; font-size:9px; text-align: left; color: #0D2137; font-weight: bold;">{{item.date}}/p> 
-                                            <p style="height:10px; width:auto; font-size:9px; text-align: left; color: #0D2137; font-weight: normal;">{{item.location}}</p>   
+                                            <p style="height:10px; width:auto; font-size:9px; text-align: left; color: #0D2137; font-weight: bold;">{{item['date']}}/p> 
+                                            <p style="height:10px; width:auto; font-size:9px; text-align: left; color: #0D2137; font-weight: normal;">{{item['location']}}</p>   
                                         
                                         </td>
 
@@ -361,7 +361,7 @@
                         <tr>
                             <td class="two-column">
                                 <table class="column" width="100%">
-                                    {% for item in data.news.top_news %}
+                                    {% for item in data['news']['top_news'] %}
                                     {% if loop.index % 2 == 1 %}
                                     <tr>
                                     {% endif%}
@@ -371,9 +371,10 @@
                                              {% endif %}
                                        
 
-                                            <img src="{{item.image}}" alt="" width="224px" height="200px">
-                                            <P style="height: 44px; width:auto; font-size: 11px; color:#0D2137;text-transform: capitalize; text-align: left; font-family: 'Inter', sans-serif; font-weight: 500;">{{item.news}}</P>
-                                            <p style="height:10px; width:auto; font-size:9px; text-align: left; color: #346BEB; font-family: 'Inter', sans-serif; font-weight: 600;">{{item.source}}<span style="padding:7px;">|  </span>{{item.location}}</p> 
+                                            <img src="{{item['image']}}" alt="" width="224px" height="200px">
+                                            <P style="height: 44px; width:auto; font-size: 11px; color:#0D2137;text-transform: capitalize; text-align: left; font-family: 'Inter', sans-serif; font-weight: 500;">{{item['news']}}</P>
+                                            <p style="height:10px; width:auto; font-size:9px; text-align: left; color: #346BEB; font-family: 'Inter', sans-serif; font-weight: 600;">
+                                                {{item['source']}}<span style="padding:7px;">|  </span>{{item['location']}}</p> 
                                         </td>
 
 
@@ -383,11 +384,11 @@
                                             <a href="#"style="height:12px; width: auto; font-size:12px; text-align: right; color: #346BEB; padding-left:159px; ">know more</a>
                                             {% endif %}
                                         
-                                            <img src="{{item.image}}" alt="" width="224px" height="200px" style="padding-top:7px">
-                                            <P style="height: 44px; width:auto; font-size: 11px; color:#0D2137; text-align:left; text-transform: capitalize; font-family: 'Inter', sans-serif; font-weight: 500;">{{item.news}}</P>
+                                            <img src="{{item['image']}}" alt="" width="224px" height="200px" style="padding-top:7px">
+                                            <P style="height: 44px; width:auto; font-size: 11px; color:#0D2137; text-align:left; text-transform: capitalize; font-family: 'Inter', sans-serif; font-weight: 500;">{{item['news']}}</P>
 
 
-                                            <p style="height:10px; width:auto; font-size:9px; text-align: left; color:#346BEB; font-family: 'Inter', sans-serif; font-weight: 600;">{{item.source}}<span style="padding:7px;">|  </span> {{item.location}}</p>            
+                                            <p style="height:10px; width:auto; font-size:9px; text-align: left; color:#346BEB; font-family: 'Inter', sans-serif; font-weight: 600;">{{item['source']}}<span style="padding:7px;">|  </span> {{item['location']}}</p>            
                                     
                                     
                                         </td>
