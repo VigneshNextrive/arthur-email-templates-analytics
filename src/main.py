@@ -43,5 +43,5 @@ def read_data (request:Request):
         }
     }
 
-    return templates.TemplateResponse('demo.html', { 'request':Request, 'data':data})
+    return templates.TemplateResponse('main.html', { 'request':Request, 'data':data})
 
