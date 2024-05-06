@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Request
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
+import requests
 
 app= FastAPI()
 #Templates configurations
@@ -43,5 +44,14 @@ def read_data (request:Request):
         }
     }
 
-    return templates.TemplateResponse('main.html', { 'request':Request, 'data':data})
+    x = requests.get('http://127.0.0.1:8000/')
+    print(x.text)
+    return templates.TemplateResponse('demo.html', { 'request':Request, 'data':data})
+
+
+    
+
+
+   
+
 
