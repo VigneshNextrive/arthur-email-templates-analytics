@@ -17,11 +17,15 @@ def read_data ():
     'sales': {
         'ongoing_sales': [
             {'image': '../src/assets/first.jpg', 'painting': 'Soleil Jaune', 'price': '£820,000', 'name': 'MAX ERNST'},
-            {'image': '../src/assets/second.jpg', 'painting': 'Marilyn (F. & S. II.25)', 'price': '$250,000', 'name': 'ANDY WARHOL'}
+            
+           
+            {'image': '../src/assets/second.jpg', 'painting': 'Marilyn (F. & S. II.25)', 'price': '$250,000', 'name': 'ANDY WARHOL'},
+            
         ],
         'past_sales': [
             {'image': '../src/assets/third.jpg', 'painting': 'Muhammad Ali', 'price': '£180,000 - £250,000', 'name': 'ANDY WARHOL'},
-            {'image': '../src/assets/fourth.jpg', 'painting': 'Queen Beatrix, from: Reigning Queens', 'price': '£30,000 - £50,000', 'name': 'ANDY WARHOL'}
+            {'image': '../src/assets/fourth.jpg', 'painting': 'Queen Beatrix, from: Reigning Queens', 'price': '£30,000 - £50,000', 'name': 'ANDY WARHOL'},
+            
         ]
     },
     'events': {
@@ -33,6 +37,7 @@ def read_data ():
         'upcoming_events':[
             {'image':'../src/assets/seventh.jpg', 'painting':'Mark Rothko', 'date':'Oct 18, 2023 - Apr 04, 2024', 'location':'Palm Springs Art Museum, Palm Springs, CA'},
             {'image':'../src/assets/eight.jpg', 'painting':'Raymond Saunders: Post No Bills', 'date':'Feb 22, 2024 - Apr 06, 2024', 'location':'David Zwirner, New York City'},
+             {'image':'../src/assets/eight.jpg', 'painting':'Raymond Saunders: Post No Bills', 'date':'Feb 22, 2024 - Apr 06, 2024', 'location':'David Zwirner, New York City'},
 
         ]
     },
@@ -45,11 +50,43 @@ def read_data ():
         }
     }
 
+    length_of_ongoing_sale=0
+    for item in data ['sales']['ongoing_sales']:
+        length_of_ongoing_sale +=1
 
-    output=(templates.get_template('/mock_design.html').render( {'request': Request, 'data': data}))
+    length_of_past_sale=0
+    for item in data ['sales']['past_sales']:
+        length_of_past_sale +=1
+
+    length_of_events_near_me=0
+    for item in data ['events']['events_near_me']:
+        length_of_events_near_me +=1
+
+    length_of_upcoming_events=0
+    for item in data ['events']['upcoming_events']:
+        length_of_upcoming_events+=1
+
+    length_of_top_news=0
+    for item in data ['news']['top_news']:
+        length_of_top_news+=1
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+
+    output=(templates.get_template('/mock_design.html').render( {'request': Request, 'data': data,'ongoing':length_of_ongoing_sale, 'past_sale':length_of_past_sale, 'events_near_me':length_of_events_near_me, 'upcoming_events':length_of_upcoming_events, 'top_news': length_of_top_news}))
     file= open('output.html', 'w')
     file.write(output)
     file.close()
+
     
 
 read_data()

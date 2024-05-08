@@ -152,7 +152,7 @@
                                     <tr>
                                         {% for item in batch %}
                                         {% if loop.index % 2 == 0 %}
-                                        <td style="padding-left:50px; padding-top:45px;">
+                                        <td style="padding-left:50px; padding-top:5px;">
                                         {% else %}
                                         <td>
                                         {% endif %}
@@ -160,13 +160,31 @@
                                             {% if loop.first %}
                                            
                                             <div  style="display:table;">
-                                                <p style="height:12px; width: auto; font-size:11px; text-align: left; color: #A34DDE;  font-family: 'Inter', sans-serif; font-weight: bold; ">Ongoing sales </p> 
+                                                <p style="height:auto; width: auto; font-size:11px; text-align: left; color: #A34DDE;  font-family: 'Inter', sans-serif; font-weight: bold; ">Ongoing sales </p> 
     
-                                                <span style="height:11px; width:48px; font: normal normal medium 9px/12px Inter; color:#0D2137; font-size:10px;display:table-cell;" >For sale</span>
-    
-                                               </div>
+                                                <p style="height:12px; width:34px; font-size:8px; text-align: left; color: #0D2137; background: #D3E6FB 0% 0% no-repeat padding-box; margin:5px;   font-family: 'Inter', sans-serif; font-weight:500; ">For Sale</p>  
+                                            </div>
 
                                             {% endif %} 
+
+                                            
+                                            {% if loop.index == 2 %}
+                                            <div  style="display:table; text-align:right;">
+                                                {% if ongoing > 2 %}
+                                                <p style="height:auto; width: auto; font-size:9px; text-align: left;   font-family: 'Inter', sans-serif; font: weight 500px;; padding-left:175px; padding-bottom:2px;"><a href="" style="color:#346BEB !important;">Know more   </a></p>
+                                                {% else %}
+                                                <p style="height:auto; width: auto; font-size:9px; text-align: left;   font-family: 'Inter', sans-serif; font: weight 500px;; padding-left:175px; padding-bottom:2px;"><a href="" style="color:#346BEB !important; visibility:hidden">Know more </a></p>
+                                                {% endif %}
+    
+                                                <p style="height:12px; width:34px; font-size:8px; text-align: left; color: #0D2137; background: #D3E6FB 0% 0% no-repeat padding-box; margin:5px;   font-family: 'Inter', sans-serif; font-weight:500;">For Bid</p>  
+    
+                                            </div>
+                                            {% endif %}
+                                    
+
+                                           
+                                        
+
                                             
                                            
                                             <img src="{{item['image']}}" alt="" width="224px" height="200px"><p style="height:6px; width:auto; font-size:12px; text-align: left; color: #0D2137; font-family: 'Inter', sans-serif; font-weight:400; font-size: 9px; "> {{item['painting']}}
@@ -203,7 +221,7 @@
                                     <tr>
                                         {% for item in batch %}
                                         {% if loop.index % 2 == 0 %}
-                                        <td style="padding-left:50px; padding-top:40px;">
+                                        <td style="padding-left:50px; padding-top:5px;">
                                         {% else %}
                                         <td>
                                         {% endif %}
@@ -213,11 +231,21 @@
                                             <p style="height:12px; width:21px; font-size:8px; text-align: left; color: #0D2137; background: #D3E6FB 0% 0% no-repeat padding-box; margin:5px;   font-family: 'Inter', sans-serif; font-weight:500;">Sold</p>  
                                             {% endif %}
 
+                                            {% if loop.index == 2 %}
+                                            <div  style="display:table; text-align:right;">
+                                                {% if past_sale > 2 %}
+                                                <p style="height:auto; width: auto; font-size:9px; text-align: left;   font-family: 'Inter', sans-serif; font: weight 500px;; padding-left:175px; padding-bottom:2px;"><a href="" style="color:#346BEB !important;">Know more   </a></p>
+                                                {% else %}
+                                                <p style="height:auto; width: auto; font-size:9px; text-align: left;   font-family: 'Inter', sans-serif; font: weight 500px;; padding-left:175px; padding-bottom:2px;"><a href="" style="color:#346BEB !important; visibility:hidden">Know more </a></p>
+                                                {% endif %} 
+                                            </div>
+                                            {% endif %}
+
 
                                             <img src="{{item['image']}}" alt="" width="224px" height="200px"><p style="height:6px; width:auto; font-size:12px; text-align: left; color: #0D2137; font-family: 'Inter', sans-serif; font-weight:400; font-size: 9px; "> {{item['painting']}} 
 
                                                 {% if loop.index % 2 ==0 %}
-                                                <span style="color: #0D2137; font-size: 9px; font-family: 'Inter', sans-serif; font-weight:bold; padding-left:135px;">{{item['price']}}</span>
+                                                <span style="color: #0D2137; font-size: 9px; font-family: 'Inter', sans-serif; font-weight:bold; padding-left:135px; padding-top:5px;">{{item['price']}}</span>
 
                                                 {% else %}
                                                 
@@ -257,13 +285,24 @@
                                         {% for item in batch %}
 
                                         {% if loop.index % 2 == 0 %}
-                                        <td style="padding-left:50px; padding-top:36px;">
+                                        <td style="padding-left:50px; padding-top:5px;">
                                         {% else %}
                                         <td>
                                         {% endif %}
                                             {% if loop.first %}
                                              <p style="height:12px; width: auto; font-size:12px; text-align: left; color: #A34DDE; font-family: 'Inter', sans-serif; font-weight: bold; ">Events near me</p>
                                             {% endif %}
+
+
+                                            {% if loop.index == 2 %}
+                                            <div  style="display:table; text-align:right;">
+                                                {% if events_near_me > 2 %}
+                                                <p style="height:auto; width: auto; font-size:9px; text-align: left;   font-family: 'Inter', sans-serif; font: weight 500px;; padding-left:175px; padding-bottom:2px;"><a href="" style="color:#346BEB !important;">Know more   </a></p>
+                                                {% else %}
+                                                <p style="height:auto; width: auto; font-size:9px; text-align: left;   font-family: 'Inter', sans-serif; font: weight 500px;; padding-left:175px; padding-bottom:2px;"><a href="" style="color:#346BEB !important; visibility:hidden">Know more </a></p>
+                                                {% endif %}
+                                                </div>
+                                                {% endif %}
                                            
 
                                             <img src="{{item['image']}}" alt="" width="224px" height="200px"><p style="height:6px; width:auto; font-size:12px; text-align: left; color: #0D2137; ">
@@ -295,13 +334,24 @@
                                     <tr>
                                         {% for item in batch %}
                                         {% if loop.index % 2 == 0 %}
-                                        <td style="padding-left:50px; padding-top:36px;">
+                                        <td style="padding-left:50px; padding-top:5px;">
                                         {% else %}
                                         <td>
                                         {% endif %}
                                             {% if loop.first %}
                                              <p style="height:12px; width: auto; font-size:12px; text-align: left; color: #A34DDE;  font-family: 'Inter', sans-serif; font-weight: bold;">Upcoming Events</p>
                                              {% endif %}
+
+
+                                             {% if loop.index == 2 %}
+                                             <div  style="display:table; text-align:right;">
+                                                 {% if upcoming_events > 2 %}
+                                                 <p style="height:auto; width: auto; font-size:9px; text-align: left;   font-family: 'Inter', sans-serif; font: weight 500px;; padding-left:175px; padding-bottom:2px;"><a href="" style="color:#346BEB !important;">Know more   </a></p>
+                                                 {% else %}
+                                                 <p style="height:auto; width: auto; font-size:9px; text-align: left;   font-family: 'Inter', sans-serif; font: weight 500px;; padding-left:175px; padding-bottom:2px;"><a href="" style="color:#346BEB !important; visibility:hidden">Know more </a></p>
+                                                 {% endif %}
+                                                </div>
+                                                {% endif %}
                                            
 
                                             <img src="{{item['image']}}" alt="" width="224px" height="200px">
@@ -343,13 +393,24 @@
                                     <tr>
                                         {% for item in batch %}
                                         {% if loop.index % 2 == 0 %}
-                                        <td style="padding-left:50px; padding-top:36px;">
+                                        <td style="padding-left:50px; padding-top:5px;">
                                         {% else %}
                                         <td>
                                         {% endif %}
                                             {% if loop.first %}
                                              <p style="height:12px; width: auto; font-size:12px; text-align: left; color: #A34DDE; font-family: 'Inter', sans-serif; font-weight: bold; ">Top news</p>
                                              {% endif %}
+
+
+                                             {% if loop.index == 2 %}
+                                             <div  style="display:table; text-align:right;">
+                                                 {% if top_news > 2 %}
+                                                 <p style="height:auto; width: auto; font-size:9px; text-align: left;   font-family: 'Inter', sans-serif; font: weight 500px;; padding-left:175px; padding-bottom:2px;"><a href="" style="color:#346BEB !important;">Know more   </a></p>
+                                                 {% else %}
+                                                 <p style="height:auto; width: auto; font-size:9px; text-align: left;   font-family: 'Inter', sans-serif; font: weight 500px;; padding-left:175px; padding-bottom:2px;"><a href="" style="color:#346BEB !important; visibility:hidden">Know more </a></p>
+                                                 {% endif %}
+                                                 </div>
+                                                 {% endif %}
                                        
 
                                             <img src="{{item['image']}}" alt="" width="224px" height="200px">
@@ -408,7 +469,10 @@
             </td>
          </tr>
     </table> 
-    <h6 style="color: #0D2137;">hiiiiii</h6>
+
+    
+    <h6 style="color: #0D2137;">{{ongoing}}</h6>
+   
 
 
     
