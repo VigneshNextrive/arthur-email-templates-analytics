@@ -5,53 +5,97 @@ import requests
 
 app= FastAPI()
 #Templates configurations
-templates= Jinja2Templates(directory='templates')
+templates= Jinja2Templates(directory='../src/templates')
 
 #Staticfiles congigurations
-app.mount('/src', StaticFiles(directory='assets'), name='src')
+# app.mount('/src', StaticFiles(directory='assets'), name='src')
 
 @app.get ('/')
-def read_data (request:Request):
+def read_data ():
 
     data = {
     'sales': {
         'ongoing_sales': [
-            {'image': '/src/assets/first.jpg', 'painting': 'Soleil Jaune', 'price': '£820,000', 'name': 'MAX ERNST'},
-            {'image': '/src/images/second.jpg', 'painting': 'Marilyn (F. & S. II.25)', 'price': '$250,000', 'name': 'ANDY WARHOL'}
+            {'image': '../src/assets/first.jpg', 'painting': 'Soleil Jaune', 'price': '£820,000', 'name': 'MAX ERNST'},
+            
+           
+            {'image': '../src/assets/second.jpg', 'painting': 'Marilyn (F. & S. II.25)', 'price': '$250,000', 'name': 'ANDY WARHOL'},
+            
         ],
         'past_sales': [
-            {'image': '/src/assets/third.jpg', 'painting': 'Muhammad Ali', 'price': '£180,000 - £250,000', 'name': 'ANDY WARHOL'},
-            {'image': '/src/assets/third.jpg', 'painting': 'Queen Beatrix, from: Reigning Queens', 'price': '£30,000 - £50,000', 'name': 'ANDY WARHOL'}
+            {'image': '../src/assets/third.jpg', 'painting': 'Muhammad Ali', 'price': '£180,000 - £250,000', 'name': 'ANDY WARHOL'},
+            {'image': '../src/assets/fourth.jpg', 'painting': 'Queen Beatrix, from: Reigning Queens', 'price': '£30,000 - £50,000', 'name': 'ANDY WARHOL'},
+            
         ]
     },
     'events': {
         'events_near_me': [
-            {'image': '/src/assets/fifth.jpg', 'painting': 'Roni Horn', 'date': 'Apr 04, 2024 - Jun 28, 2024', 'location': 'Hauser & Wirth, New York City, United States'},
-            {'image': '/src/assests/sixth.jpg', 'painting': 'Verena Loewensberg: Kind of Blue', 'date': 'Feb 21, 2024 - Apr 27, 2024', 'location': 'Hauser & Wirth, New York City, United States'}
+            {'image': '../src/assets/fifth.jpg', 'painting': 'Roni Horn', 'date': 'Apr 04, 2024 - Jun 28, 2024', 'location': 'Hauser & Wirth, New York City, United States'},
+            {'image': '../src/assets/sixth.jpg', 'painting': 'Verena Loewensberg: Kind of Blue', 'date': 'Feb 21, 2024 - Apr 27, 2024', 'location': 'Hauser & Wirth, New York City, United States'}
         ],
 
         'upcoming_events':[
-            {'image':'/src/assets/seventh.jpg', 'painting':'Mark Rothko', 'date':'Oct 18, 2023 - Apr 04, 2024', 'location':'Palm Springs Art Museum, Palm Springs, CA'},
-            {'image':'/src/assets/eigth.jpg', 'painting':'Raymond Saunders: Post No Bills', 'date':'Feb 22, 2024 - Apr 06, 2024', 'location':'David Zwirner, New York City'},
+            {'image':'../src/assets/seventh.jpg', 'painting':'Mark Rothko', 'date':'Oct 18, 2023 - Apr 04, 2024', 'location':'Palm Springs Art Museum, Palm Springs, CA'},
+            {'image':'../src/assets/eight.jpg', 'painting':'Raymond Saunders: Post No Bills', 'date':'Feb 22, 2024 - Apr 06, 2024', 'location':'David Zwirner, New York City'},
+             {'image':'../src/assets/eight.jpg', 'painting':'Raymond Saunders: Post No Bills', 'date':'Feb 22, 2024 - Apr 06, 2024', 'location':'David Zwirner, New York City'},
 
         ]
     },
     'news': {
         'top_news': [
-            {'image':'/src/assets/nine.jpg', 'news': 'Collector Francesco Pellizzi’s Rare Basquiats Head to Auction for the First Time', 'source': 'Observer', 'location': 'Alexandra Tremayne-Pengelly'},
-            {'image':'/src/assets/tenth.jpg', 'news': 'Nicole Eisenman’s First Major Survey Comes to the Museum of Contemporary Art Chicago', 'source': 'Hyperallergic', 'location': 'Museum of Contemporary Art Chicago'}
+            {'image':'../src/assets/nine.jpg', 'news': 'Collector Francesco Pellizzi’s Rare Basquiats Head to Auction for the First Time', 'source': 'Observer', 'location': 'Alexandra Tremayne-Pengelly'},
+            {'image':'../src/assets/tenth.jpg', 'news': 'Nicole Eisenman’s First Major Survey Comes to the Museum of Contemporary Art Chicago', 'source': 'Hyperallergic', 'location': 'Museum of Contemporary Art Chicago'},
+          
             ]
         }
     }
 
-    x = requests.get('http://127.0.0.1:8000/')
-    print(x.text)
-    return templates.TemplateResponse('demo.html', { 'request':Request, 'data':data})
+    length_of_ongoing_sale=0
+    for item in data ['sales']['ongoing_sales']:
+        length_of_ongoing_sale +=1
+
+    length_of_past_sale=0
+    for item in data ['sales']['past_sales']:
+        length_of_past_sale +=1
+
+    length_of_events_near_me=0
+    for item in data ['events']['events_near_me']:
+        length_of_events_near_me +=1
+
+    length_of_upcoming_events=0
+    for item in data ['events']['upcoming_events']:
+        length_of_upcoming_events+=1
+
+    length_of_top_news=0
+    for item in data ['news']['top_news']:
+        length_of_top_news+=1
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+
+    output=(templates.get_template('/mock_design.html').render( {'request': Request, 'data': data,'ongoing':length_of_ongoing_sale, 'past_sale':length_of_past_sale, 'events_near_me':length_of_events_near_me, 'upcoming_events':length_of_upcoming_events, 'top_news': length_of_top_news}))
+    file= open('output.html', 'w')
+    file.write(output)
+    file.close()
+
+    
+
+read_data()
 
 
     
 
 
    
+
 
 
