@@ -27,7 +27,7 @@ def Sales_page():
     output=(templates.get_template('/sales_demo.html').render( {'request': Request,} ))
     pdfkit.from_string(output, 'output.pdf',)
 
-
+Sales_page()
     
 
 
