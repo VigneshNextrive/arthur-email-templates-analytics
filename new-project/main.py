@@ -1,37 +1,30 @@
-from fastapi import FastAPI, Request
-from fastapi.templating import Jinja2Templates
-import pdfkit
-import datetime
-
-app= FastAPI()
-#Templates configurations
-templates= Jinja2Templates(directory='../new-project/templates')
-
-#Staticfiles congigurations
-# app.mount('/src', StaticFiles(directory='assets'), name='src')
+import subfile
 
 def arthur_landing ():
-
-    x= datetime.datetime.now()
-    date=(x.strftime('%d'))
-    month=(x.strftime('%b'))
-    year=(x.strftime('%Y'))
-
-    output=(templates.get_template('/arthur_landing.html').render( {'request': Request,'date':date, 'month':month, 'year':year} ))
-    pdfkit.from_string(output, 'output1.pdf',)
-
-arthur_landing()              
+    subfile.arthur_index()
 
 
-def Sales_page():
-    output=(templates.get_template('/sales_demo.html').render( {'request': Request,} ))
-    pdfkit.from_string(output, 'output.pdf',)
 
-Sales_page()
-    
+def sales_demo():
+    subfile.ongoing_sales()
 
 
-   
+
+def past_sales ():
+    subfile.past_sales()
+past_sales()
+
+
+def action_lots ():
+   subfile.action_lot()
+action_lots()
+
+def pdf_merger():
+    subfile.merge_pdf()
+pdf_merger()
+
+
+
 
 
 

@@ -6,21 +6,21 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <title>page2</title>
+    <title>Action</title>
     <style>
 
 
-        body{
+        body {
            margin:0;
            padding:0;
         }
 
-        section{
+        section {
             padding-left:30px;
             padding-top:30px;
         }
 
-        p {
+        .heading {
             font-family: 'Inter', sans-serif;
             font-weight: bold;
             font-size:20px;
@@ -31,18 +31,6 @@
             text-transform: capitalize;
         }
 
-        .sub-heading {
-            font-family: 'Inter', sans-serif;
-            font-weight:600;
-            font-style: normal;
-            font-size:11px;
-            text-align:left;
-            color:#060607;
-            margin:0;
-            text-transform: capitalize;
-            padding-top:8px;
-            width:100%;
-        }
 
         .painting {
             font-family: 'Inter', sans-serif;
@@ -50,8 +38,6 @@
             font-size:11px;
             text-align:left;
             color: #000000;
-            margin:0;
-            padding-top:6px;
         }
 
         .price {
@@ -68,7 +54,9 @@
             font-weight:500;
             font-size:10px;
             text-align:left;
-            color: #060607;
+            color:#060607;
+            padding-bottom:1px;
+            margin:2px;
         }
 
        .info {
@@ -81,22 +69,21 @@
         }
 
        .page-info {
-        padding-top: 25px;
-        padding-bottom:20px;
-       }
+        padding-top: 5px;
+        padding-bottom:2px;
+        }
 
-       .heading-part{
+       .heading-part {
         height:10% !important;
-       }
+        }
 
        table {
         height:90% !important;
-       }
-
-       .page-break {
-        page-break-after: always;
         }
 
+        .page-break {
+            page-break-after: always;
+            }
 
     </style>
 </head>
@@ -105,8 +92,7 @@
 
     <section >
         <div class="heading-part">
-            <p>Sales</p>
-            <p class="sub-heading">ONGOING SALES</p>
+            <p class="heading">Auction lots</p>
             <hr>
         </div>
 
@@ -114,56 +100,38 @@
             <table border="0" width="100%" cellpadding="0" cellspacing="0" style="padding-right:30px;" > 
                 <tr class="first-row">
                     <td>
-                        <img src="ding-top:20px !important;">
-                        <img src="{{ongoing_image_1}}" alt="" style="object-fit: cover; ">
+                        <img src="{{action_image_1}}" alt="" style="object-fit: cover; ">
                         <p style="font-family:'Inter', sans-serif; ; font-size:10px; font-weight:bold; color:#6331AA;text-align:left; padding-top:3px; margin:0" >{{first_author}}</p>
                         <p class="painting">{{first_painting}}</p>
                         <p class="price"> {{first_price}}</p>
                         <div class="page-info">
+                            <p class="size">Low Estimate: <span class="info">{{first_low_estimate}}</span></p>
+                            <p class="size">Sq. Inch Price: <span class="info">{{first_square_inch}}</span></p>
                             <p class="size">Size: <span class="info">{{first_size}}</span></p>
                             <p class="size">Medium: <span class="info">{{first_medium}}</span></p>
                         </div>
                         <hr style="width:100%;text-align:left;margin-left:0">
-
-                        <p style="font-family: 'Inter', sans-serif; font-size:bold;font-size:8px; text-align:left;color: #000000;">Know more</p>
+                        <p style="font-family: 'Inter', sans-serif; font-weight:bold;font-size:8px; text-align:right;color: #000000;">Know more</p>
                     </td>
 
                     <td style="padding-left:48px;">
-                        <img src="ding-top:20px !important;">
-                        <img src="{{ongoing_image_2}}" alt="" style="object-fit: cover; ">
+                        <img src="{{action_image_2}}" alt="" style="object-fit: cover; ">
                         <p style="font-family:'Inter', sans-serif; ; font-size:10px; font-weight:bold; color:#6331AA;text-align:left; padding-top:3px; margin:0" >{{second_author}}</p>
                         <p class="painting">{{second_painting}}</p>
                         <p class="price"> {{second_price}}</p>
                         <div class="page-info">
+                            <p class="size">Low Estimate: <span class="info">{{second_low_estimate}}</span></p>
+                            <p class="size">Sq. Inch Price: <span class="info">{{second_square_inch}}</span></p>
                             <p class="size">Size: <span class="info">{{second_size}}</span></p>
                             <p class="size">Medium: <span class="info">{{second_medium}}</span></p>
                         </div>
                         <hr style="width:100%;text-align:left;margin-left:0">
-                        <p style="font-family: 'Inter', sans-serif; font-size:bold;font-size:8px; text-align:left;color: #000000;">Know more</p>
+                        <p style="font-family: 'Inter', sans-serif; font-weight:bold;font-size:8px; text-align:right;color: #000000;">Know more</p>
                     </td>
                 </tr>
-
-                <tr  class="second-row">
-                    <td style="padding-top:20px !important;">
-                        <img src="{{ongoing_image_3}}
-                        " alt="" style="object-fit: cover; ">
-                        <p style="font-family:'Inter', sans-serif; ; font-size:10px; font-weight:bold; color:#6331AA;text-align:left; padding-top:3px; margin:0" >{{third_author}}</p>
-                        <p class="painting">{{third_painting}}</p>
-                        <p class="price"> {{third_price}}</p>
-                        <div class="page-info">
-                            <p class="size">Size: <span class="info">{{third_size}}</span></p>
-                            <p class="size">Medium: <span class="info">{{third_medium}}</span></p>
-                        </div>
-                        <hr style="width:100%;text-align:left;margin-left:0">
-                        <p style="font-family: 'Inter', sans-serif; font-size:bold;font-size:8px; text-align:left;color: #000000;">Know more</p>
-                    </td>
-                </tr>
-
                 <tr class="page-break"></tr>
-
-<!--                 testing purpose row-->  
-
-</table>
+            </table>
     </section>
+
 </body>
 </html>

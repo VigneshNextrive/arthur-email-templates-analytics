@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <title>past sales</title>
+    <style>
+
+        body {
+           margin:0;
+           padding:0;
+        }
+
+        section {
+            padding-left:30px;
+            padding-top:30px;
+        }
+
+        .heading-part {
+            height:10% !important;
+            width:100%;
+           }
+
+        .sub-heading {
+            font-family: 'Inter', sans-serif; 
+            font-size:11px;
+            font-weight:600;
+            font-style: normal;
+            text-align:left;
+            color:#060607;
+            margin:0;
+            text-transform: capitalize;
+            padding-top:8px;
+            width:100% !important;
+        }
+
+        .painting{
+            font-family: 'Inter', sans-serif;
+            font-weight:500;
+            font-size:11px;
+            text-align:left;
+            color: #000000;
+            margin:0;
+            padding-top:6px;
+        }
+
+        .price {
+            font-family: 'Inter', sans-serif;
+            font-weight:bold;
+            font-size:12px;
+            text-align:left;
+            color: #000000;
+        }
+
+       .size{
+            font-family: 'Inter', sans-serif;
+            font-size:500;
+            font-size:10px;
+            text-align:left;
+            color: #060607;
+            margin:0;
+        }
+
+       .info {
+            font-family: 'Inter', sans-serif;
+            font-weight:500;
+            font-size:10px;
+            text-align:left;
+            color: #000000 !important;
+            padding-left:8px;
+        }
+
+       .page-info {
+            padding-top: 1px;
+            padding-bottom:2px;
+            margin:2px;
+        }
+
+       .know-more {
+            font-family: 'Inter', sans-serif;
+            font-weight:bold;
+            font-size:8px;
+            text-align:left;
+            color: #000000;
+        }
+
+       table {
+            height:90% !important;
+        }
+        @media print {
+            .page-break {
+                page-break-after: always !important;
+            }
+
+
+        }
+
+
+
+    </style>
+</head>
+<body>
+
+
+    <section>
+        <div class="heading-part">
+            <p class="sub-heading">PAST SALES </p>
+            <hr>
+        </div>
+
+
+            <table border="0" width="100%" cellpadding="0" cellspacing="0" style="padding-right:30px;" > 
+                <tr class="first-row">
+                    <td>
+                        <img src="{{past_image_1}}" alt="" style="object-fit: cover; ">
+                        <p style="font-family:'Inter', sans-serif; ; font-size:10px; font-weight:bold; color:#6331AA;text-align:left; padding-top:3px; margin:0" >{{first_author}}</p>
+                        <p class="painting">{{first_painting}}</p>
+                        <p class="price"> {{first_price}}</p>
+                        <div class="page-info">
+                            <p class="size">Size: <span class="info">{{first_size}}</span></p>
+                            <p class="size">Medium: <span class="info">{{first_medium}}</span></p>
+                        </div>
+                        <hr style="width:100%;text-align:left;margin-left:0">
+                        <p class="know-more">Know more</p>
+                    </td>
+
+                    <td style="padding-left:48px;">
+                        <img src="{{past_image_2}}" alt="" style="object-fit: cover; ">
+                        <p style="font-family:'Inter', sans-serif; ; font-size:10px; font-weight:bold; color:#6331AA;text-align:left; padding-top:3px; margin:0" >{{second_author}}</p>
+                        <p class="painting">{{second_painting}}</p>
+                        <p class="price"> {{second_price}}</p>
+                        <div class="page-info">
+                            <p class="size">Size: <span class="info">{{second_size}}</span></p>
+                            <p class="size">Medium: <span class="info">{{second_medium}}</span></p>
+                        </div>
+                        <hr style="width:100%;text-align:left;margin-left:0">
+                        <p class="know-more">Know more</p>
+                    </td>
+                </tr>
+
+
+                <!-- testing -->
+                <tr class="first-row">
+                    <td>
+                        <img src="{{past_image_1}}" alt="" style="object-fit: cover; ">
+                        <p style="font-family:'Inter', sans-serif; ; font-size:10px; font-weight:bold; color:#6331AA;text-align:left; padding-top:3px; margin:0" >{{first_author}}</p>
+                        <p class="painting">{{first_painting}}</p>
+                        <p class="price"> {{first_price}}</p>
+                        <div class="page-info">
+                            <p class="size">Size: <span class="info">{{first_size}}</span></p>
+                            <p class="size">Medium: <span class="info">{{first_medium}}</span></p>
+                        </div>
+                        <hr style="width:100%;text-align:left;margin-left:0">
+                        <p class="know-more">Know more</p>
+                    </td>
+
+                    <td style="padding-left:48px;">
+                        <img src="{{past_image_2}}" alt="" style="object-fit: cover; ">
+                        <p style="font-family:'Inter', sans-serif; ; font-size:10px; font-weight:bold; color:#6331AA;text-align:left; padding-top:3px; margin:0" >{{second_author}}</p>
+                        <p class="painting">{{second_painting}}</p>
+                        <p class="price"> {{second_price}}</p>
+                        <div class="page-info">
+                            <p class="size">Size: <span class="info">{{second_size}}</span></p>
+                            <p class="size">Medium: <span class="info">{{second_medium}}</span></p>
+                        </div>
+                        <hr style="width:100%;text-align:left;margin-left:0">
+                        <p class="know-more">Know more</p>
+                    </td>
+                </tr>
+
+
+
+                <tr class="page-break"></tr>
+                <tr class="first-row">
+                    <td>
+                        <img src="{{past_image_1}}" alt="" style="object-fit: cover; ">
+                        <p style="font-family:'Inter', sans-serif; ; font-size:10px; font-weight:bold; color:#6331AA;text-align:left; padding-top:3px; margin:0" >{{first_author}}</p>
+                        <p class="painting">{{first_painting}}</p>
+                        <p class="price"> {{first_price}}</p>
+                        <div class="page-info">
+                            <p class="size">Size: <span class="info">{{first_size}}</span></p>
+                            <p class="size">Medium: <span class="info">{{first_medium}}</span></p>
+                        </div>
+                        <hr style="width:100%;text-align:left;margin-left:0">
+                        <p class="know-more">Know more</p>
+                    </td>
+
+                    <td style="padding-left:48px;">
+                        <img src="{{past_image_2}}" alt="" style="object-fit: cover; ">
+                        <p style="font-family:'Inter', sans-serif; ; font-size:10px; font-weight:bold; color:#6331AA;text-align:left; padding-top:3px; margin:0" >{{second_author}}</p>
+                        <p class="painting">{{second_painting}}</p>
+                        <p class="price"> {{second_price}}</p>
+                        <div class="page-info">
+                            <p class="size">Size: <span class="info">{{second_size}}</span></p>
+                            <p class="size">Medium: <span class="info">{{second_medium}}</span></p>
+                        </div>
+                        <hr style="width:100%;text-align:left;margin-left:0">
+                        <p class="know-more">Know more</p>
+                    </td>
+                </tr>
+            </table>
+    </section>
+
+</body>
+</html>
