@@ -5,23 +5,24 @@ def arthur_landing ():
 
 
 
+
 def sales_demo():
     subfile.ongoing_sales()
 
 
-
 def past_sales ():
     subfile.past_sales()
-past_sales()
-
+# past_sales()
 
 def action_lots ():
    subfile.action_lot()
-action_lots()
+
+def event ():
+    subfile.events_page()
+event()
 
 def pdf_merger():
     subfile.merge_pdf()
-pdf_merger()
 
 
 

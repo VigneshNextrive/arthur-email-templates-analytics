@@ -22,12 +22,12 @@ action_lots = [{'image':'/Users/Pavan/arthur project/arthur-email-templates-anal
 
 {'image':'/Users/Pavan/arthur project/arthur-email-templates-analytics/new-project/assets/first.jpg', 'author':'ANDY WARHOL','painting':'THE BROOKLYN BRIDGE 1883 - 1983 (N...', 'price':'$2,176', 'low_estimate':'$800', 'square_inch':'3', 'size':'23.875 * 35.875 Inch','medium':'Color screenprint, offset lithograph on smooth wove...'}]
 
-events= {
-    'events':[ 
+events = {
+    'event':[ 
 
-        {'heading':'GALLERY EXHIBITION', 'image':'/Users/Pavan/arthur project/arthur-email-templates-analytics/new-project/assets/first.jpg', 'painting':'Andy Warhol: Beyond the Brand', 'location':'London, United Kingdom', 'date':'Jan 18, 2024 - May 06, 2024','description':'An exhibition dedicated to the life and work of Andy Warhol at 148 & 29 New Bond Street.', 'artist_images':'/Users/Pavan/arthur project/arthur-email-templates-analytics/new-project/assets/fourth.jpg'},
+        {'heading':'GALLERY EXHIBITION', 'image':'/Users/Pavan/arthur project/arthur-email-templates-analytics/new-project/assets/first.jpg', 'painting':'Andy Warhol: Beyond the Brand', 'location':'London, United Kingdom', 'date':'Jan 18, 2024 - May 06, 2024','description':'An exhibition dedicated to the life and work of Andy Warhol at 148 & 29 New Bond Street.', 'artist_images':['/Users/Pavan/arthur project/arthur-email-templates-analytics/new-project/assets/first.jpg']},
               
-        {'heading':'MUSEUM EXHIBITION', 'image':'arthur-email-templates-analytics/new-project/assets/first.jpg', 'painting':'Collection2 Body---Body', 'location':'National Museum of Art Osaka, Osaka, Japan', 'date':'Feb 06, 2024 - May 06, 2024','description':'The body remains a subject and an issue that is indivisible from artistic expressions and acts i.e., the body of the artist, model, and viewer; physical representation; nudes; and portraits and self-portraits. Moreover, in contemporary society we are repeatedly faced with questions surrounding the body in terms of our relationship with others, and as a battlefield for power s...', 'artist_image_1':'/Users/Pavan/arthur project/arthur-email-templates-analytics/new-project/assets/fourth.jpg','artist_image_2':'/Users/Pavan/arthur project/arthur-email-templates-analytics/new-project/assets/fourth.jpg','artist_image_3':'/Users/Pavan/arthur project/arthur-email-templates-analytics/new-project/assets/fourth.jpg',}
+        {'heading':'MUSEUM EXHIBITION', 'image':'/Users/Pavan/arthur project/arthur-email-templates-analytics/new-project/assets/first.jpg', 'painting':'Collection2 Body---Body', 'location':'National Museum of Art Osaka, Osaka, Japan', 'date':'Feb 06, 2024 - May 06, 2024','description':'The body remains a subject and an issue that is indivisible from artistic expressions and acts i.e., the body of the artist, model, and viewer; physical representation; nudes; and portraits and self-portraits. Moreover, in contemporary society we are repeatedly faced with questions surrounding the body in terms of our relationship with others, and as a battlefield for power s...', 'artist_images':['/Users/Pavan/arthur project/arthur-email-templates-analytics/new-project/assets/first.jpg','/Users/Pavan/arthur project/arthur-email-templates-analytics/new-project/assets/first.jpg','/Users/Pavan/arthur project/arthur-email-templates-analytics/new-project/assets/first.jpg'],}
         ]}
 
 
@@ -58,9 +58,8 @@ def action_lot():
     output = (templates.get_template('/action_lots.html').render({ 'action_lots':action_lots} ))
     pdfkit.from_string(output, 'action_lots.pdf',)
 
-def events():
-    output=(templates.get_template('/events.html').render({'events':events['events']}))
-    pdfkit.from_string(output, 'events.pdf',)
+def events_page():
+    print(templates.get_template('/events.html').render({'events':events['event']}))
 
 
 def merge_pdf():

@@ -15,7 +15,6 @@
             padding-left:30px;
             padding-top:30px;
             padding-right:20px;
-            width:100% !important;
         }
 
         .heading {
@@ -25,7 +24,7 @@
             text-align:left;
             color:#060607;
             margin:0;
-            width:100% !important;
+            width:100%;
             text-transform: capitalize;
 
         }
@@ -41,7 +40,7 @@
                 margin:0;
                 text-transform:uppercase;
                 padding-top:12px;
-                width:100% !important; 
+                width:100%; 
         }
 
         .painting {
@@ -53,7 +52,7 @@
                 color:#000000;
                 margin:0;
                 padding-top:13px;
-                width:100% !important; 
+                width:100%; 
         }
 
         .description{
@@ -64,7 +63,7 @@
                 text-align:left;
                 color:#060607;
                 margin:0;
-                width:100% !important; 
+                width:100%; 
                 margin-top:20px;
                 margin-bottom:20px;
 
@@ -78,7 +77,7 @@
                 text-align:left;
                 color:#060607;
                 margin:0;
-                width:100% !important; 
+                width:100%; 
                 padding-top: 10px;
         }
 
@@ -86,49 +85,36 @@
 </head>
 <body>
     <section>
-        <div>
+        <div class="heading-part">
             <p class="heading">Events</p>
             <hr>
         </div>
-        <table border="0" width="100%" cellpadding="0" cellspacing="0" margin="0" padding="0">
-            {% for item in events[0:2] %}
-            <tr style="padding:2px; width:100%;">
-                <td style="width:100%;">
-                    <p class="sub-heading">{{item['heading']}}</p>
-                    <img src="{{item['image']}}" alt="painting of andy warhol" style="object-fit: cover; padding-top:12px; max-width:200px;">
-                    <p class="painting">{{item['painting']}}</p>
+
+            <table border="0" width="100%" cellpadding="0" cellspacing="0">
+              <tr style="padding:2px; width:100%;">
+                  <td style="width:100%;">
+                    <p class="sub-heading">GALLERY EXHIBITON</p>
+                    <img src="../assets/first.jpg" alt="painting of andy warhol" style="object-fit: cover; padding-top:12px; max-height:200px;">
+                    <p class="painting">Andy Warhol: Beyond the Brand</p>
                     <div style="width:100%; margin:0; padding-top:10px;padding-bottom:20px;">
-                        <p style="float:left; margin:0;font-size:10px; font-family: 'Inter', sans-serif;font-weight:500;" >{{item['location']}}</p>
-                        <p style="float:right; margin:0;font-size:10px; font-family: 'Inter', sans-serif;font-weight:500;">{{item['date']}}</p>
+                        <p style="float:left; margin:0;font-size:10px; font-family: 'Inter', sans-serif;font-weight:500;" >London, United Kingdom</p>
+                        <p style="float:right; margin:0;font-size:10px; font-family: 'Inter', sans-serif;font-weight:500;">Jan 18, 2024 - May 06, 2024</p>
                     </div>
                     <hr>
-                    <p class="description">{{item['description']}}</p>
+                    <p class="description">An exhibition dedicated to the life and work of Andy Warhol at 148 & 29 New Bond Street.</p>
                     <hr>
-                </td>
-            </tr>
+                  </td>
+              </tr>
 
-            <tr style="padding:2px; width:100%;">
-                {% for image in item['artist_images'] %}
-                {% if loop.index > 1%}
-                <td style="padding-left:100px; padding-bottom:62px; width:100%;">
-                {% else %}
+              <tr style="padding:2px; width:100%;">
                 <td style="width:100%;">
-                {% endif %}
-                    {% if loop.first %}
                     <p class="participating-artist">Participating Artists</p>
-                    {% endif%}
-        
-                    <img src="{{image}}" alt="painting of andy warhol" style="object-fit: cover;padding-top:14px;padding-bottom:22px; max-width:200px;">
-                    {% if loop.first %}
+                    <img src="../assets/first.jpg" alt="painting of andy warhol" style="object-fit: cover;padding-top:14px;padding-bottom:22px; max-width:200px;">
                     <hr>
                     <p style="font-family: 'Inter', sans-serif; font-weight:bold;font-size:8px; text-align:right;color: #000000; margin-bottom:60px;">Know more</p>
-                    {% endif %}
                 </td>
-                {% endfor%}
-            </tr>
-            {% endfor%}
-        </table>
-        <hr>
+              </tr>
+            </table>
     </section>
     
 </body>
