@@ -82,6 +82,44 @@
                 padding-top: 10px;
         }
 
+        .artist-name {
+            font-family: 'Inter', sans-serif;
+            font-weight:500;
+            font-style: normal;
+            font-size:11px;
+            text-align:left;
+            text-transform: capitalize;
+            color:#000000;
+            margin:0;
+            width:100%; 
+    }
+
+    .country {
+         
+            font-family: 'Inter', sans-serif;
+            font-weight:400;
+            font-style: normal;
+            font-size:9px;
+            text-align:left;
+            color:#000000;
+            margin:0;
+            width:100%; 
+            padding-top:3px;
+            text-transform: capitalize;
+        }
+        .read-more {
+            font-family: 'Inter', sans-serif;
+            font-weight:bold;
+            font-style: normal;
+            font-size:8px;
+            text-transform: capitalize;
+            text-decoration: none;
+            text-align:right !important;
+            color:#0C0C0C;
+            margin:0;
+            width:100%; 
+        }
+
     </style>
 </head>
 <body>
@@ -102,29 +140,42 @@
                         <p style="float:right; margin:0;font-size:10px; font-family: 'Inter', sans-serif;font-weight:500;">{{item['date']}}</p>
                     </div>
                     <hr>
+                    {% if  item['description']|length > 350 %}
+                    <p class="description">{{item['description'] | truncate(300) }}</p>
+                    <p href="#" class="read-more">Read More</p>
+                    {% else %}
                     <p class="description">{{item['description']}}</p>
+                    {% endif %}
+
+
                     <hr>
                 </td>
             </tr>
 
             <tr style="padding:2px; width:100%;">
-                {% for image in item['artist_images'] %}
-                {% if loop.index > 1%}
-                <td style="padding-left:100px; padding-bottom:62px; width:100%;">
-                {% else %}
                 <td style="width:100%;">
-                {% endif %}
                     {% if loop.first %}
                     <p class="participating-artist">Participating Artists</p>
                     {% endif%}
-        
-                    <img src="{{image}}" alt="painting of andy warhol" style="object-fit: cover;padding-top:14px;padding-bottom:22px; max-width:200px;">
+                    {% for image in item['artist_images'][0:] %}
+                        {% if loop.index == 1 %}
+                        <figure style="margin:0; display:inline-block;">
+                        {% else%}
+                        <figure style="margin:0; display:inline-block;padding-left:70px;">
+                        {% endif %}
+
+                            <img src="{{image['artist-image']}}" alt="painting of andy warhol" style="object-fit: cover;padding-top:14px;padding-bottom:10px; max-width:200px;">
+                            <figcaption class="artist-name">{{image['artist-name']}}</figcaption>
+                            <figcaption class="country"> {{image['country']}}</figcaption>
+                        </figure>
+
+                       
+                    {% endfor %}
                     {% if loop.first %}
                     <hr>
-                    <p style="font-family: 'Inter', sans-serif; font-weight:bold;font-size:8px; text-align:right;color: #000000; margin-bottom:60px;">Know more</p>
+                    <p style="font-family: 'Inter', sans-serif; font-weight:bold;font-size:8px; text-align:right;color: #000000; margin-bottom:60px;width:100%;">Know more</p>
                     {% endif %}
                 </td>
-                {% endfor%}
             </tr>
             {% endfor%}
         </table>
