@@ -55,28 +55,36 @@
             color: #000000;
         }
 
-       .size{
-            font-family: 'Inter', sans-serif;
-            font-size:500;
-            font-size:10px;
-            text-align:left;
-            color: #060607;
+        .size {
+            text-align: left;
+            color:#808080;
+            margin-top: 0px;
+            float: left;
+            clear: both;
             margin:0;
-        }
-
-       .info {
             font-family: 'Inter', sans-serif;
             font-weight:500;
             font-size:10px;
-            text-align:left;
-            color: #000000 !important;
-            padding-left:8px;
-        }
+            margin-right:14px;
+          }
+          
+          .info{
+            text-align: left;
+            color: #060607;
+            margin:0;
+            font-family: 'Inter', sans-serif;
+            font-weight:500;
+            font-size:10px;
+            margin-left:14px;
+
+          }
+    
 
        .page-info {
             padding-top: 1px;
             padding-bottom:2px;
             margin:2px;
+            color: black;
         }
 
        .know-more {
@@ -99,7 +107,6 @@
         }
 
 
-
     </style>
 </head>
 <body>
@@ -110,98 +117,39 @@
             <p class="sub-heading">PAST SALES </p>
             <hr>
         </div>
-
-
-            <table border="0" width="100%" cellpadding="0" cellspacing="0" style="padding-right:30px;" > 
+        <div style="display: block; width: 100%;">
+            <table border="0" cellpadding="0" cellspacing="0" style="padding-right:30px;width:100%;" > 
                 <tr class="first-row">
+                    {% for item in past_sales[0:2] %}
+                    {% if loop.index % 2 == 0  %}
+                    <td style="padding-left:25px;">
+
+                    {% else %}
                     <td>
-                        <img src="{{past_image_1}}" alt="" style="object-fit: cover; ">
-                        <p style="font-family:'Inter', sans-serif; ; font-size:10px; font-weight:bold; color:#6331AA;text-align:left; padding-top:3px; margin:0" >{{first_author}}</p>
-                        <p class="painting">{{first_painting}}</p>
-                        <p class="price"> {{first_price}}</p>
+                    {% endif %}
+                        <img src="{{item['image']}}" alt="" style="object-fit: cover; max-height:200px; ">
+                        <p style="font-family:'Inter', sans-serif; ; font-size:10px; font-weight:bold; color:#6331AA;text-align:left; padding-top:3px; margin:0" >{{item['author']}}</p>
+                        <p class="painting">{{item['painting']}}</p>
+                        <p class="price"> {{item['price']}}</p>
                         <div class="page-info">
-                            <p class="size">Size: <span class="info">{{first_size}}</span></p>
-                            <p class="size">Medium: <span class="info">{{first_medium}}</span></p>
+                            <div>
+                                <p class="size">Size:</p>
+                                <p class="info"> {{item['size']}}</p>
+                            </div>
+                            <div>
+                                <p class="size">Medium:</p>
+                                <p class="info"> {{item['medium']}}</p>
+                            </div>
+                           
                         </div>
                         <hr style="width:100%;text-align:left;margin-left:0">
                         <p class="know-more">Know more</p>
                     </td>
-
-                    <td style="padding-left:48px;">
-                        <img src="{{past_image_2}}" alt="" style="object-fit: cover; ">
-                        <p style="font-family:'Inter', sans-serif; ; font-size:10px; font-weight:bold; color:#6331AA;text-align:left; padding-top:3px; margin:0" >{{second_author}}</p>
-                        <p class="painting">{{second_painting}}</p>
-                        <p class="price"> {{second_price}}</p>
-                        <div class="page-info">
-                            <p class="size">Size: <span class="info">{{second_size}}</span></p>
-                            <p class="size">Medium: <span class="info">{{second_medium}}</span></p>
-                        </div>
-                        <hr style="width:100%;text-align:left;margin-left:0">
-                        <p class="know-more">Know more</p>
-                    </td>
+                    {% endfor %}
                 </tr>
-
-
-                <!-- testing -->
-                <tr class="first-row">
-                    <td>
-                        <img src="{{past_image_1}}" alt="" style="object-fit: cover; ">
-                        <p style="font-family:'Inter', sans-serif; ; font-size:10px; font-weight:bold; color:#6331AA;text-align:left; padding-top:3px; margin:0" >{{first_author}}</p>
-                        <p class="painting">{{first_painting}}</p>
-                        <p class="price"> {{first_price}}</p>
-                        <div class="page-info">
-                            <p class="size">Size: <span class="info">{{first_size}}</span></p>
-                            <p class="size">Medium: <span class="info">{{first_medium}}</span></p>
-                        </div>
-                        <hr style="width:100%;text-align:left;margin-left:0">
-                        <p class="know-more">Know more</p>
-                    </td>
-
-                    <td style="padding-left:48px;">
-                        <img src="{{past_image_2}}" alt="" style="object-fit: cover; ">
-                        <p style="font-family:'Inter', sans-serif; ; font-size:10px; font-weight:bold; color:#6331AA;text-align:left; padding-top:3px; margin:0" >{{second_author}}</p>
-                        <p class="painting">{{second_painting}}</p>
-                        <p class="price"> {{second_price}}</p>
-                        <div class="page-info">
-                            <p class="size">Size: <span class="info">{{second_size}}</span></p>
-                            <p class="size">Medium: <span class="info">{{second_medium}}</span></p>
-                        </div>
-                        <hr style="width:100%;text-align:left;margin-left:0">
-                        <p class="know-more">Know more</p>
-                    </td>
-                </tr>
-
-
-
-                <tr class="page-break"></tr>
-                <tr class="first-row">
-                    <td>
-                        <img src="{{past_image_1}}" alt="" style="object-fit: cover; ">
-                        <p style="font-family:'Inter', sans-serif; ; font-size:10px; font-weight:bold; color:#6331AA;text-align:left; padding-top:3px; margin:0" >{{first_author}}</p>
-                        <p class="painting">{{first_painting}}</p>
-                        <p class="price"> {{first_price}}</p>
-                        <div class="page-info">
-                            <p class="size">Size: <span class="info">{{first_size}}</span></p>
-                            <p class="size">Medium: <span class="info">{{first_medium}}</span></p>
-                        </div>
-                        <hr style="width:100%;text-align:left;margin-left:0">
-                        <p class="know-more">Know more</p>
-                    </td>
-
-                    <td style="padding-left:48px;">
-                        <img src="{{past_image_2}}" alt="" style="object-fit: cover; ">
-                        <p style="font-family:'Inter', sans-serif; ; font-size:10px; font-weight:bold; color:#6331AA;text-align:left; padding-top:3px; margin:0" >{{second_author}}</p>
-                        <p class="painting">{{second_painting}}</p>
-                        <p class="price"> {{second_price}}</p>
-                        <div class="page-info">
-                            <p class="size">Size: <span class="info">{{second_size}}</span></p>
-                            <p class="size">Medium: <span class="info">{{second_medium}}</span></p>
-                        </div>
-                        <hr style="width:100%;text-align:left;margin-left:0">
-                        <p class="know-more">Know more</p>
-                    </td>
-                </tr>
+                              
             </table>
+        </div>
     </section>
 
 </body>

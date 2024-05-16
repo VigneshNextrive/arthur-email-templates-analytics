@@ -4,15 +4,13 @@ def arthur_landing ():
     subfile.arthur_index()
 
 
-
-
 def sales_demo():
     subfile.ongoing_sales()
 
 
 def past_sales ():
     subfile.past_sales()
-# past_sales()
+
 
 def action_lots ():
    subfile.action_lot()

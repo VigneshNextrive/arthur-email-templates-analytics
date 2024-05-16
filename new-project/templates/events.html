@@ -60,7 +60,7 @@
                 font-family: 'Inter', sans-serif;
                 font-weight:400;
                 font-style: normal;
-                font-size:10px;
+                font-size:15px;
                 text-align:left;
                 color:#060607;
                 margin:0;
@@ -123,16 +123,14 @@
 
         .container {
             position: relative;
-            text-align: center;
-            color: white;
+            text-align: left;
+            color: black;
         }
 
         .center-text {
             position: absolute;
             top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-             
+            left: 8%;
         }
             
 
@@ -150,16 +148,13 @@
                 <td style="width:100%;">
                     <p class="sub-heading">{{item['heading']}}</p>
                     {% if item['image'] == '' %}
-                        {% set initial = '' %}
-                        {% for word in item['painting'].split(" ") %}
-                        {% set initial = initial + word[0] %}
-                        {% endfor %}
-
-                    <div class="container"> 
-                        <img src="https://img.freepik.com/free-photo/abstract-autumn-beauty-multi-colored-leaf-vein-pattern-generated-by-ai_188544-9871.jpg?size=626&ext=jpg&ga=GA1.1.1369675164.1715731200&semt=ais_user" alt="" style="object-fit:cover; padding-top:12px; max-width:200px;">
                         
-                        <div class="center-text">{{initial}}</div>
-                    </div>
+                            <div class="container"> 
+                                <img src="/Users/Pavan/arthur project/arthur-email-templates-analytics/new-project/assets/yellow background.jpeg" alt="" style="object-fit:cover; padding-top:12px; max-width:200px; text-align:left">
+                                <div class="center-text">{{painting_string}}</div>
+                            </div>
+                   
+
 
                     {% else %}
 

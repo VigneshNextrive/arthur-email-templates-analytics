@@ -1,6 +1,6 @@
 from fastapi.templating import Jinja2Templates
 import pdfkit
-import PyPDF2
+from PyPDF2 import PdfWriter
 import datetime
 import os
 
@@ -28,7 +28,7 @@ events = {
 
         {'heading':'GALLERY EXHIBITION', 'image':'/Users/Pavan/arthur project/arthur-email-templates-analytics/new-project/assets/first.jpg', 'painting':'Andy Warhol: Beyond the Brand', 'location':'London, United Kingdom', 'date':'Jan 18, 2024 - May 06, 2024','description':'An exhibition dedicated to the life and work of Andy Warhol at 148 & 29 New Bond Street.', 'artist_images':[{'artist-image':'/Users/Pavan/arthur project/arthur-email-templates-analytics/new-project/assets/first.jpg', 'artist-name':'Jean fautrirer', 'country':'France'}]},
               
-        {'heading':'MUSEUM EXHIBITION', 'image':'/Users/Pavan/arthur project/arthur-email-templates-analytics/new-project/assets/first.jpg', 'painting':'Collection2 Body---Body', 'location':'National Museum of Art Osaka, Osaka, Japan', 'date':'Feb 06, 2024 - May 06, 2024','description':'The body remains a subject and an issue that is indivisible from artistic expressions and acts i.e., the body of the artist, model, and viewer; physical representation; nudes; and portraits and self-portraits. Moreover, in contemporary society we are repeatedly faced with questions surrounding the body in terms of our relationship with others, and as a battlefield for power s...', 'artist_images':[
+        {'heading':'MUSEUM EXHIBITION', 'image':'', 'painting':'Collection2 Body---Body', 'location':'National Museum of Art Osaka, Osaka, Japan', 'date':'Feb 06, 2024 - May 06, 2024','description':'The body remains a subject and an issue that is indivisible from artistic expressions and acts i.e., the body of the artist, model, and viewer; physical representation; nudes; and portraits and self-portraits. Moreover, in contemporary society we are repeatedly faced with questions surrounding the body in terms of our relationship with others, and as a battlefield for power s...', 'artist_images':[
             
             {'artist-image':'/Users/Pavan/arthur project/arthur-email-templates-analytics/new-project/assets/first.jpg', 'artist-name':'Andy Warhol', 'country':'United States'},
             {'artist-image':'/Users/Pavan/arthur project/arthur-email-templates-analytics/new-project/assets/first.jpg', 'artist-name':'Pablo Piccaso', 'country':'Spain'},
@@ -50,34 +50,47 @@ def arthur_index():
 
 def ongoing_sales():
 
-    output = (templates.get_template('/sales_demo.html').render({
+    output=(templates.get_template('/sales_demo.html').render({
     'ongoing_sales': sales['ongoing_sales'],}))
     pdfkit.from_string(output, 'ongoing_sales.pdf',)
 
+
 def past_sales():
 
-    output = (templates.get_template('/past_sales.html').render({'past_sales':sales['past_sales']} ))
+    output=(templates.get_template('/past_sales.html').render({'past_sales':sales['past_sales']} ))
     pdfkit.from_string(output, 'past_sales.pdf',)
 
 def action_lot():
 
-    output = (templates.get_template('/action_lots.html').render({ 'action_lots':action_lots} ))
-    pdfkit.from_string(output, 'action_lots.pdf',)
-
+    output=(templates.get_template('/action_lots.html').render({ 'action_lots':action_lots}))
+    pdfkit.from_string(output, 'actions_lot.pdf',)
 
 
 def events_page():
+
+    a=events['event']
+    for item in a[0:]:
+        image= item['image']
+        if image == '':
+            image_description_letters= " ".join([ word[0] for word in item['painting'].split(" ")])
+            string = image_description_letters
+        else:
+            string=''
+        
+    
   
-    print(templates.get_template('/events.html').render({'events':events['event']}))
-"""     pdfkit.from_string(output, 'events.pdf') 
- """
+    output=(templates.get_template('/events.html').render({'events':events['event'], 'painting_string':string}))
+    pdfkit.from_string(output, 'events.pdf',)
 
 def merge_pdf():
-    merger = PyPDF2.PdfMerger()
-    for file in os.listdir(os.curdir):
-        if file.endswith(".pdf"):
-            merger.append(file)
-    merger.write("Arthur_pdf_creation.pdf")
+
+    merger = PdfWriter()
+
+    for pdf in ["output_index.pdf", "ongoing_sales.pdf", "past_sales.pdf", 'actions_lot.pdf', ]:
+        merger.append(pdf)
+
+    merger.write("merged-pdf.pdf")
+    merger.close()
 
 
 
