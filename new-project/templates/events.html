@@ -94,7 +94,7 @@
             width:100%; 
     }
 
-    .country {
+        .country {
          
             font-family: 'Inter', sans-serif;
             font-weight:400;
@@ -107,6 +107,7 @@
             padding-top:3px;
             text-transform: capitalize;
         }
+
         .read-more {
             font-family: 'Inter', sans-serif;
             font-weight:bold;
@@ -119,6 +120,21 @@
             margin:0;
             width:100%; 
         }
+
+        .container {
+            position: relative;
+            text-align: center;
+            color: white;
+        }
+
+        .center-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+             
+        }
+            
 
     </style>
 </head>
@@ -133,7 +149,26 @@
             <tr style="padding:2px; width:100%;">
                 <td style="width:100%;">
                     <p class="sub-heading">{{item['heading']}}</p>
-                    <img src="{{item['image']}}" alt="painting of andy warhol" style="object-fit: cover; padding-top:12px; max-width:200px;">
+                    {% if item['image'] == '' %}
+                        {% set initial = '' %}
+                        {% for word in item['painting'].split(" ") %}
+                        {% set initial = initial + word[0] %}
+                        {% endfor %}
+
+                    <div class="container"> 
+                        <img src="https://img.freepik.com/free-photo/abstract-autumn-beauty-multi-colored-leaf-vein-pattern-generated-by-ai_188544-9871.jpg?size=626&ext=jpg&ga=GA1.1.1369675164.1715731200&semt=ais_user" alt="" style="object-fit:cover; padding-top:12px; max-width:200px;">
+                        
+                        <div class="center-text">{{initial}}</div>
+                    </div>
+
+                    {% else %}
+
+                    <div>
+                        <img src="{{item['image']}}" alt="painting of andy warhol" style="object-fit: cover; padding-top:12px; max-width:200px;">
+                    </div>
+
+                  
+                    {%  endif %}
                     <p class="painting">{{item['painting']}}</p>
                     <div style="width:100%; margin:0; padding-top:10px;padding-bottom:20px;">
                         <p style="float:left; margin:0;font-size:10px; font-family: 'Inter', sans-serif;font-weight:500;" >{{item['location']}}</p>
