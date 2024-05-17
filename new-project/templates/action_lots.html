@@ -6,42 +6,31 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <title>page2</title>
+    <title>Action</title>
     <style>
 
 
-        body{
+        body {
            margin:0;
            padding:0;
         }
 
-        section{
+        section {
             padding-left:30px;
             padding-top:30px;
         }
 
-        p {
+        .heading {
             font-family: 'Inter', sans-serif;
             font-weight: bold;
             font-size:20px;
             text-align:left;
             color:#060607;
             margin:0;
-            text-transform:capitalize;
+            width:100%;
+            text-transform: capitalize;
         }
 
-        .sub-heading {
-            font-family: 'Inter', sans-serif;
-            font-weight:600;
-            font-style: normal;
-            font-size:11px;
-            text-align:left;
-            color:#060607;
-            margin:0;
-            text-transform: capitalize;
-            padding-top:8px;
-            width:100%;
-        }
 
         .painting {
             font-family: 'Inter', sans-serif;
@@ -49,8 +38,6 @@
             font-size:11px;
             text-align:left;
             color: #000000;
-            margin:0;
-            padding-top:6px;
         }
 
         .price {
@@ -73,7 +60,7 @@
             font-weight:500;
             font-size:10px;
             margin-right:14px;
-          }
+        }
           
         .info{
             text-align: left;
@@ -82,8 +69,9 @@
             font-family: 'Inter', sans-serif;
             font-weight:500;
             font-size:10px;
-            margin-left:14px;
+            margin-left:1px;
         }
+
 
         .info-size {
             color: #060607;
@@ -91,15 +79,25 @@
             font-family: 'Inter', sans-serif;
             font-weight:500;
             font-size:10px;
-            padding-left:55px;
+            padding-left:82px;
         }
 
-        .page-info {
-            padding-top: 25px;
-            padding-bottom:20px;
+        .medium-info {
+            color: #060607;
+            margin:0;
+            font-family: 'Inter', sans-serif;
+            font-weight:500;
+            font-size:10px;
+            padding-left:82px;
         }
 
-       .heading-part{
+
+       .page-info {
+            padding-top: 5px;
+            padding-bottom:2px;
+        }
+
+       .heading-part {
         height:10% !important;
         }
 
@@ -107,76 +105,60 @@
         height:90% !important;
         }
 
-       .page-break {
-        page-break-after: always;
+        .page-break {
+            page-break-after: always;
         }
 
     </style>
 </head>
 <body>
 
-    <section >
+
+    <section>
         <div class="heading-part">
-            <p>Sales</p>
-            <p class="sub-heading">ONGOING SALES</p>
+            <p class="heading">Auction lots</p>
             <hr>
         </div>
 
+
             <table border="0" width="100%" cellpadding="0" cellspacing="0" style="padding-right:30px;" > 
                 <tr class="first-row">
-                    {% for item in ongoing_sales[0:2] %}
-                    {% if loop.index % 2 == 0  %}
+                    {% for item in action_lots[0:2] %}
+                    {% if loop.index == 2 %}
                     <td style="padding-left:25px;">
                     {% else %}
                     <td>
                     {% endif %}
-                        <img src="{{item['image']}}" alt="" style="object-fit: cover; ">
+                    
+                        <img src="{{item['image']}}" alt="" style="object-fit: cover;max-height:200px; ">
                         <p style="font-family:'Inter', sans-serif; ; font-size:10px; font-weight:bold; color:#6331AA;text-align:left; padding-top:3px; margin:0" >{{item['author']}}</p>
                         <p class="painting">{{item['painting']}}</p>
                         <p class="price"> {{item['price']}}</p>
                         <div class="page-info">
+                            <div>
+                                <p class="size">Low Estimate:</p>
+                                <p class="info"> {{item['low_estimate']}}</p>
+                            </div>
+                            <div>
+                                <p class="size">Sq. Inch Price:</p>
+                                <p class="info"> {{item['square_inch']}}</p>
+                            </div>
                             <div>
                                 <p class="size">Size:</p>
                                 <p class="info-size"> {{item['size']}}</p>
                             </div>
                             <div>
                                 <p class="size">Medium:</p>
-                                <p class="info"> {{item['medium']}}</p>
+                                <p class="medium-info"> {{item['medium']}}</p>
                             </div>
                         </div>
                         <hr style="width:100%;text-align:left;margin-left:0">
-                        <p style="font-family: 'Inter', sans-serif; font-weight:bold;font-size:8px; text-align:left;color: #000000;">Know more</p>
-                    </td>
-                    {% endfor %}
-                </tr>
-
-                <tr  class="second-row">
-                    {% for item in ongoing_sales[2:4] %}
-                    {% if loop.index % 2 == 0  %}
-                    <td style="padding-left:25px;">
-                    {% else %}
-                    <td>
-                    {% endif %}
-                        <img src="{{item['image']}}" alt="" style="object-fit: cover; max-height:200px; padding-top:15px; ">
-                        <p style="font-family:'Inter', sans-serif; ; font-size:10px; font-weight:bold; color:#6331AA;text-align:left; padding-top:3px; margin:0" >{{item['author']}}</p>
-                        <p class="painting">{{item['painting']}}</p>
-                        <p class="price"> {{item['price']}}</p>
-                        <div class="page-info">
-                            <div>
-                                <p class="size">Size:</p>
-                                <p class="info-size"> {{item['size']}}</p>
-                            </div>
-                            <div>
-                                <p class="size">Medium:</p>
-                                <p class="info"> {{item['medium']}}</p>
-                            </div>  
-                        </div>
-                        <hr style="width:100%;text-align:left;margin-left:0">
-                        <p style="font-family: 'Inter', sans-serif; font-weight:bold;font-size:8px; text-align:left;color: #000000;">Know more</p>
+                        <p style="font-family: 'Inter', sans-serif; font-weight:bold;font-size:8px; text-align:right;color: #000000;">Know more</p>
                     </td>
                     {% endfor %}
                 </tr>
             </table>
     </section>
+
 </body>
 </html>

@@ -6,44 +6,38 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <title>page2</title>
+    <title>past sales</title>
     <style>
 
-
-        body{
+        body {
            margin:0;
            padding:0;
         }
 
-        section{
+        section {
             padding-left:30px;
             padding-top:30px;
         }
 
-        p {
-            font-family: 'Inter', sans-serif;
-            font-weight: bold;
-            font-size:20px;
-            text-align:left;
-            color:#060607;
-            margin:0;
-            text-transform:capitalize;
+        .heading-part {
+            height:10% !important;
+            width:100%;
         }
 
         .sub-heading {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', sans-serif; 
+            font-size:11px;
             font-weight:600;
             font-style: normal;
-            font-size:11px;
             text-align:left;
             color:#060607;
             margin:0;
             text-transform: capitalize;
             padding-top:8px;
-            width:100%;
+            width:100% !important;
         }
 
-        .painting {
+        .painting{
             font-family: 'Inter', sans-serif;
             font-weight:500;
             font-size:11px;
@@ -59,7 +53,6 @@
             font-size:12px;
             text-align:left;
             color: #000000;
-            padding-top:10px;
         }
 
         .size {
@@ -73,7 +66,7 @@
             font-weight:500;
             font-size:10px;
             margin-right:14px;
-          }
+        }
           
         .info{
             text-align: left;
@@ -94,43 +87,49 @@
             padding-left:55px;
         }
 
-        .page-info {
-            padding-top: 25px;
-            padding-bottom:20px;
+       .page-info {
+            padding-top: 1px;
+            padding-bottom:2px;
+            color: black;
         }
 
-       .heading-part{
-        height:10% !important;
+       .know-more {
+            font-family: 'Inter', sans-serif;
+            font-weight:bold;
+            font-size:8px;
+            text-align:left;
+            color: #000000;
         }
 
        table {
-        height:90% !important;
+            height:90% !important;
         }
-
-       .page-break {
-        page-break-after: always;
+        @media print {
+            .page-break {
+                page-break-after: always !important;
+            }
         }
 
     </style>
 </head>
 <body>
 
-    <section >
+    <section>
         <div class="heading-part">
-            <p>Sales</p>
-            <p class="sub-heading">ONGOING SALES</p>
+            <p class="sub-heading">PAST SALES </p>
             <hr>
         </div>
 
-            <table border="0" width="100%" cellpadding="0" cellspacing="0" style="padding-right:30px;" > 
+        <div style="display: block; width: 100%;">
+            <table border="0" cellpadding="0" cellspacing="0" style="padding-right:30px;width:100%;" > 
                 <tr class="first-row">
-                    {% for item in ongoing_sales[0:2] %}
+                    {% for item in past_sales[0:2] %}
                     {% if loop.index % 2 == 0  %}
                     <td style="padding-left:25px;">
                     {% else %}
                     <td>
                     {% endif %}
-                        <img src="{{item['image']}}" alt="" style="object-fit: cover; ">
+                        <img src="{{item['image']}}" alt="" style="object-fit: cover; max-height:200px; ">
                         <p style="font-family:'Inter', sans-serif; ; font-size:10px; font-weight:bold; color:#6331AA;text-align:left; padding-top:3px; margin:0" >{{item['author']}}</p>
                         <p class="painting">{{item['painting']}}</p>
                         <p class="price"> {{item['price']}}</p>
@@ -145,38 +144,13 @@
                             </div>
                         </div>
                         <hr style="width:100%;text-align:left;margin-left:0">
-                        <p style="font-family: 'Inter', sans-serif; font-weight:bold;font-size:8px; text-align:left;color: #000000;">Know more</p>
+                        <p class="know-more">Know more</p>
                     </td>
                     {% endfor %}
-                </tr>
-
-                <tr  class="second-row">
-                    {% for item in ongoing_sales[2:4] %}
-                    {% if loop.index % 2 == 0  %}
-                    <td style="padding-left:25px;">
-                    {% else %}
-                    <td>
-                    {% endif %}
-                        <img src="{{item['image']}}" alt="" style="object-fit: cover; max-height:200px; padding-top:15px; ">
-                        <p style="font-family:'Inter', sans-serif; ; font-size:10px; font-weight:bold; color:#6331AA;text-align:left; padding-top:3px; margin:0" >{{item['author']}}</p>
-                        <p class="painting">{{item['painting']}}</p>
-                        <p class="price"> {{item['price']}}</p>
-                        <div class="page-info">
-                            <div>
-                                <p class="size">Size:</p>
-                                <p class="info-size"> {{item['size']}}</p>
-                            </div>
-                            <div>
-                                <p class="size">Medium:</p>
-                                <p class="info"> {{item['medium']}}</p>
-                            </div>  
-                        </div>
-                        <hr style="width:100%;text-align:left;margin-left:0">
-                        <p style="font-family: 'Inter', sans-serif; font-weight:bold;font-size:8px; text-align:left;color: #000000;">Know more</p>
-                    </td>
-                    {% endfor %}
-                </tr>
+                </tr>             
             </table>
+        </div>
     </section>
+    
 </body>
 </html>
