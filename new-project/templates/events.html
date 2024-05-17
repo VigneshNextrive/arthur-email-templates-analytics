@@ -15,7 +15,6 @@
             padding-left:30px;
             padding-top:30px;
             padding-right:20px;
-            width:100% !important;
         }
 
         .heading {
@@ -27,7 +26,6 @@
             margin:0;
             width:100% !important;
             text-transform: capitalize;
-
         }
 
         .sub-heading {
@@ -58,16 +56,15 @@
 
         .description{
                 font-family: 'Inter', sans-serif;
-                font-weight:400;
+                font-weight:300;
                 font-style: normal;
-                font-size:15px;
+                font-size:13px;
                 text-align:left;
                 color:#060607;
                 margin:0;
                 width:100% !important; 
                 margin-top:20px;
                 margin-bottom:20px;
-
         }
 
         .participating-artist {
@@ -83,19 +80,18 @@
         }
 
         .artist-name {
-            font-family: 'Inter', sans-serif;
-            font-weight:500;
-            font-style: normal;
-            font-size:11px;
-            text-align:left;
-            text-transform: capitalize;
-            color:#000000;
-            margin:0;
-            width:100%; 
-    }
+                font-family: 'Inter', sans-serif;
+                font-weight:500;
+                font-style: normal;
+                font-size:11px;
+                text-align:left;
+                text-transform: capitalize;
+                color:#000000;
+                margin:0;
+                width:100%; 
+        }
 
         .country {
-         
             font-family: 'Inter', sans-serif;
             font-weight:400;
             font-style: normal;
@@ -114,8 +110,9 @@
             font-style: normal;
             font-size:8px;
             text-transform: capitalize;
+            text-align: right;
             text-decoration: none;
-            text-align:right !important;
+            display:inline-block;
             color:#0C0C0C;
             margin:0;
             width:100%; 
@@ -132,84 +129,77 @@
             top: 50%;
             left: 8%;
         }
+
+        @media screen  and (max-width:707px) { 
+            figure {
+                width:40%;
+                text-align:left;
+                padding-left: 0 !important;
+        }
+    }
             
 
     </style>
 </head>
 <body>
+
     <section>
         <div>
             <p class="heading">Events</p>
             <hr>
         </div>
+
         <table border="0" width="100%" cellpadding="0" cellspacing="0" margin="0" padding="0">
-            {% for item in events[0:2] %}
             <tr style="padding:2px; width:100%;">
                 <td style="width:100%;">
-                    <p class="sub-heading">{{item['heading']}}</p>
-                    {% if item['image'] == '' %}
-                        
+                    <p class="sub-heading">{{event['heading']}}</p>
+                    {% if event['image'] == '' %}
                             <div class="container"> 
                                 <img src="/Users/Pavan/arthur project/arthur-email-templates-analytics/new-project/assets/yellow background.jpeg" alt="" style="object-fit:cover; padding-top:12px; max-width:200px; text-align:left">
                                 <div class="center-text">{{painting_string}}</div>
                             </div>
-                   
-
-
                     {% else %}
 
                     <div>
-                        <img src="{{item['image']}}" alt="painting of andy warhol" style="object-fit: cover; padding-top:12px; max-width:200px;">
+                        <img src="{{event['image']}}" alt="painting of andy warhol" style="object-fit: cover; padding-top:12px; max-width:200px;">
                     </div>
-
-                  
                     {%  endif %}
-                    <p class="painting">{{item['painting']}}</p>
+
+                    <p class="painting">{{ event['painting']}}</p>
                     <div style="width:100%; margin:0; padding-top:10px;padding-bottom:20px;">
-                        <p style="float:left; margin:0;font-size:10px; font-family: 'Inter', sans-serif;font-weight:500;" >{{item['location']}}</p>
-                        <p style="float:right; margin:0;font-size:10px; font-family: 'Inter', sans-serif;font-weight:500;">{{item['date']}}</p>
+                        <p style="float:left; margin:0;font-size:10px; font-family: 'Inter', sans-serif;font-weight:500;" >{{event['location']}}</p>
+                        <p style="float:right; margin:0;font-size:10px; font-family: 'Inter', sans-serif;font-weight:500;">{{event['date']}}</p>
                     </div>
                     <hr>
-                    {% if  item['description']|length > 350 %}
-                    <p class="description">{{item['description'] | truncate(300) }}</p>
-                    <p href="#" class="read-more">Read More</p>
+                    {% if  event['description']|length > 350 %}
+                    <p class="description">{{event['description'] | truncate(300) }}</p>
+                    <a href="#" class="read-more"> Read More</a>
                     {% else %}
-                    <p class="description">{{item['description']}}</p>
+                    <p class="description">{{event['description']}}</p>
                     {% endif %}
-
-
                     <hr>
                 </td>
             </tr>
 
             <tr style="padding:2px; width:100%;">
                 <td style="width:100%;">
-                    {% if loop.first %}
                     <p class="participating-artist">Participating Artists</p>
-                    {% endif%}
-                    {% for image in item['artist_images'][0:] %}
-                        {% if loop.index == 1 %}
-                        <figure style="margin:0; display:inline-block;">
-                        {% else%}
-                        <figure style="margin:0; display:inline-block;padding-left:70px;">
+                    {% for image in event['artist_images'] %}
+                        {% if loop.index == 1 or loop.index % 4 == 0  %}
+                        <figure style="margin:0; display:inline-block; padding-bottom:35px;">
+                        {% else %}
+                        <figure style="margin:0; display:inline-block; padding-left:70px;padding-bottom:35px;">
                         {% endif %}
-
                             <img src="{{image['artist-image']}}" alt="painting of andy warhol" style="object-fit: cover;padding-top:14px;padding-bottom:10px; max-width:200px;">
                             <figcaption class="artist-name">{{image['artist-name']}}</figcaption>
                             <figcaption class="country"> {{image['country']}}</figcaption>
                         </figure>
-
-                       
                     {% endfor %}
-                    {% if loop.first %}
                     <hr>
-                    <p style="font-family: 'Inter', sans-serif; font-weight:bold;font-size:8px; text-align:right;color: #000000; margin-bottom:60px;width:100%;">Know more</p>
-                    {% endif %}
+                    <p style="font-family: 'Inter', sans-serif; font-weight:bold;font-size:8px; text-align:right;color: #000000; margin-bottom:40px;width:100%;">Know more</p>
                 </td>
             </tr>
-            {% endfor%}
         </table>
-        <hr>
     </section>
     
 </body>

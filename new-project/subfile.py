@@ -2,8 +2,6 @@ from fastapi.templating import Jinja2Templates
 import pdfkit
 from PyPDF2 import PdfWriter
 import datetime
-import os
-
 
 templates = Jinja2Templates(directory='../new-project/templates')
 
@@ -35,67 +33,59 @@ events = {
             {'artist-image':'/Users/Pavan/arthur project/arthur-email-templates-analytics/new-project/assets/first.jpg', 'artist-name':'Jean fautrirer', 'country':'France'} ],}]}
 
 
-
-
-
-
 def arthur_index():
+
     x = datetime.datetime.now()
     date = (x.strftime('%d'))
     month = (x.strftime('%b'))
     year = (x.strftime('%Y'))
     output = (templates.get_template('/arthur_landing.html').render( {'date':date, 'month':month, 'year':year, 'artwork':'5','action_lots':'3', 'event':'2','news':'3', 'artist':'1'}))
-    pdfkit.from_string(output, 'output_index.pdf',)
+    pdfkit.from_string(output, 'output_index.pdf',options={'zoom':'1.15'})
 
 
 def ongoing_sales():
 
-    output=(templates.get_template('/sales_demo.html').render({
-    'ongoing_sales': sales['ongoing_sales'],}))
-    pdfkit.from_string(output, 'ongoing_sales.pdf',)
+    output = (templates.get_template('/sales_demo.html').render({'ongoing_sales': sales['ongoing_sales'],}))
+    pdfkit.from_string(output, 'ongoing_sales.pdf',options={'zoom':'1.4'})
 
 
 def past_sales():
 
-    output=(templates.get_template('/past_sales.html').render({'past_sales':sales['past_sales']} ))
-    pdfkit.from_string(output, 'past_sales.pdf',)
+    output = (templates.get_template('/past_sales.html').render({'past_sales':sales['past_sales']} ))
+    option = {'zoom': '1.2',}   
+    pdfkit.from_string(output, 'past_sales.pdf', options = option)
+
 
 def action_lot():
-
-    output=(templates.get_template('/action_lots.html').render({ 'action_lots':action_lots}))
-    pdfkit.from_string(output, 'actions_lot.pdf',)
+    output = (templates.get_template('/action_lots.html').render({ 'action_lots':action_lots}))
+    pdfkit.from_string(output, 'action_lots.pdf', options = {'zoom':'1.1'} )
 
 
 def events_page():
-
-    a=events['event']
-    for item in a[0:]:
-        image= item['image']
-        if image == '':
-            image_description_letters= " ".join([ word[0] for word in item['painting'].split(" ")])
+    for i,event in enumerate(events['event']):
+        image = event['image']
+        if image =='' or image == None:
+            image_description_letters = " ".join([ word[0] for word in event['painting'].split(" ")])
             string = image_description_letters
         else:
-            string=''
-        
-    
-  
-    output=(templates.get_template('/events.html').render({'events':events['event'], 'painting_string':string}))
-    pdfkit.from_string(output, 'events.pdf',)
+            string = ''
+        output=(templates.get_template('/events.html').render({ 'event':event, 'painting_string':string}))
+        if i == 0:
+            events_pdf = pdfkit.from_string(output, f'events_{i}.pdf', options={'zoom':'1.5'})
+        else:
+            events_pdf = pdfkit.from_string(output, f'events_{i}.pdf', options={'zoom':'1.0'})
+
+    merge = PdfWriter()
+    for pdf in ['events_0.pdf','events_1.pdf']:
+        merge.append(pdf)
+    merge.write('events.pdf')
+    merge.close()
+
 
 def merge_pdf():
-
+    
     merger = PdfWriter()
-
-    for pdf in ["output_index.pdf", "ongoing_sales.pdf", "past_sales.pdf", 'actions_lot.pdf', ]:
+    for pdf in ["output_index.pdf", "ongoing_sales.pdf", "past_sales.pdf", 'action_lots.pdf', 'events.pdf']:
         merger.append(pdf)
-
     merger.write("merged-pdf.pdf")
     merger.close()
-
-
-
-
-
-
-
-
